@@ -26,8 +26,8 @@ ColumnLayout {
         id: weatherIcon
         source: icon
         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-        sourceSize.height: 32
-        sourceSize.width: 32
+        sourceSize.height: 128
+        sourceSize.width: 128
     }
 
     Label {

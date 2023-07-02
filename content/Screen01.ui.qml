@@ -85,8 +85,8 @@ Item {
                     Image {
                         id: currentWeatherImage
                         source: "images/PlaceHolderIcon.png"
-                        sourceSize.height: 64
-                        sourceSize.width: 64
+                        sourceSize.height: 128
+                        sourceSize.width: 128
                     }
 
                     Label {

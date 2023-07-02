@@ -13,6 +13,7 @@ ApiClient::ApiClient(QObject *parent)
     , m_netReply{nullptr}
     , m_dataBuffer{new QByteArray{}}
 {
+    Q_INIT_RESOURCE(weatherResources);
     parseUserSecrets();
 }
 
@@ -23,16 +24,17 @@ ApiClient::~ApiClient()
 
 void ApiClient::parseUserSecrets()
 {
-    QFile file("qrc:/secrets.json");
+    QFile file(":/secrets.json");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        qDebug() << "Failed to Open File";
+        qDebug() << "Failed to Open File " + file.errorString();
         return;
     }
 
     QJsonDocument jsonDocument = QJsonDocument::fromJson(file.readAll());
     QJsonObject jsonObject = jsonDocument.object();
     m_userSecrets = jsonObject;
+    file.close();
 }
 
 void ApiClient::onGetLocation(const QString &location)
